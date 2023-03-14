@@ -1,0 +1,12 @@
+#showData {
+  display: grid;
+  grid-template-columns: repeat(4, .5fr);
+  grid-gap: 10px;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+  padding: auto;
+}
+
