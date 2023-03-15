@@ -5,12 +5,12 @@ fetch("https://fakestoreapi.com/products")
     console.log(err);
   });
 
-  let cartData = []
+let cartData = [];
 
 function appenddata(data) {
   data.map((elem, index) => {
     let box = document.createElement("div");
-    box.style.border = "1px dotted black"
+    box.style.border = "1px dotted black";
 
     let image = document.createElement("img");
     image.src = elem.image;
@@ -27,15 +27,24 @@ function appenddata(data) {
     let category = document.createElement("h3");
     category.textContent = "Category - " + elem.category;
 
-    let btn = document.createElement("button")
-    btn.textContent = "Add to Cart"
-    btn.id = "cart"
+    let btn = document.createElement("button");
+    btn.textContent = "Add to Cart";
+    btn.id = "cart";
 
-    btn.addEventListener("click",function addtoCart(){
-      localStorage.setItem("cart",JSON.stringify(elem))
-    })
+    btn.addEventListener("click", function addtoCart() {
+      let obj = {
+        image: elem.image,
+        title: elem.title,
+        description: elem.description,
+        price: elem.price,
+        category: elem.category,
+      };
 
-    box.append(image, title, des, price, category,btn);
+      cartData.push(obj);
+      localStorage.setItem("cart", JSON.stringify(cartData));
+    });
+
+    box.append(image, title, des, price, category, btn);
     document.getElementById("showData").append(box);
   });
 }
