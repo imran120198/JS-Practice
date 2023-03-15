@@ -41,6 +41,7 @@ function appenddata(data) {
       };
 
       cartData.push(obj);
+      alert("Item added in cart");
       localStorage.setItem("cart", JSON.stringify(cartData));
     });
 
